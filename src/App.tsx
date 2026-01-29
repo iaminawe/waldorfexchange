@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Support from "./pages/Support";
 import Donors from "./pages/Donors";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Auth from "./pages/Auth";
 import AdminDashboard from "./pages/admin/Dashboard";
 import AdminDonations from "./pages/admin/Donations";
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/support" element={<Support />} />
           <Route path="/donors" element={<Donors />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/auth" element={<Auth />} />
           
           {/* Admin Routes */}
