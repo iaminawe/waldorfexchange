@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, CheckCircle, Loader2 } from "lucide-react";
+import { Mail, CheckCircle, Loader2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
@@ -34,14 +34,13 @@ export function NewsletterSection() {
         .from("newsletter_subscribers")
         .insert({ 
           email: email.toLowerCase().trim(),
-          is_confirmed: true, // Auto-confirm for simplicity
+          is_confirmed: true,
         });
 
       if (error) {
         if (error.code === "23505") {
-          // Duplicate email
           toast({
-            title: "Already subscribed",
+            title: "Already subscribed! 🎉",
             description: "This email is already on our mailing list!",
           });
         } else {
@@ -50,7 +49,7 @@ export function NewsletterSection() {
       } else {
         setIsSubscribed(true);
         toast({
-          title: "You're subscribed!",
+          title: "You're subscribed! 🎉",
           description: "Thank you for joining our mailing list.",
         });
       }
@@ -66,59 +65,68 @@ export function NewsletterSection() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-primary text-primary-foreground">
-      <div className="container">
+    <section className="py-16 md:py-24 bg-gradient-to-br from-teal via-teal-dark to-teal text-white relative overflow-hidden">
+      {/* Fun background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-white/10 animate-float" />
+        <div className="absolute bottom-10 right-10 w-24 h-24 rounded-full bg-white/10 animate-float" style={{ animationDelay: "1s" }} />
+        <div className="absolute top-1/2 right-1/4 w-16 h-16 rounded-full bg-sunny/20 animate-bounce-gentle" />
+      </div>
+
+      <div className="container relative">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-foreground/10 mb-6">
-            <Mail className="h-8 w-8" />
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-white/20 mb-6">
+            <Mail className="h-10 w-10" />
           </div>
 
-          <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">
-            Stay Updated on Our Journey
+          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+            Stay in the Loop! 📬
           </h2>
-          <p className="text-lg text-primary-foreground/80 mb-8">
-            Sign up for occasional updates about our fundraising progress, trip preparations, 
+          <p className="text-lg text-white/80 mb-8">
+            Sign up for updates about our fundraising progress, trip preparations, 
             and stories from the exchange. We promise not to spam you!
           </p>
 
           {isSubscribed ? (
-            <div className="flex items-center justify-center gap-3 p-6 rounded-xl bg-primary-foreground/10">
-              <CheckCircle className="h-6 w-6 text-success" />
-              <p className="font-medium">
-                Thank you! You're now on our mailing list.
+            <div className="flex items-center justify-center gap-3 p-6 rounded-2xl bg-white/20 border-2 border-white/30">
+              <CheckCircle className="h-8 w-8 text-sunny" />
+              <p className="font-bold text-lg">
+                Awesome! You're now on our mailing list! 🎉
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <Input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="your.email@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="flex-1 bg-primary-foreground text-foreground placeholder:text-muted-foreground"
+                className="flex-1 bg-white text-foreground placeholder:text-muted-foreground rounded-xl h-12 text-base border-2 border-white/50 focus:border-sunny"
                 disabled={isSubmitting}
               />
               <Button 
                 type="submit" 
-                variant="secondary"
                 disabled={isSubmitting}
-                className="gap-2"
+                className="gap-2 rounded-xl h-12 font-bold bg-sunny hover:bg-sunny-dark text-sunny-dark hover:text-white"
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                    Subscribing...
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                    Joining...
                   </>
                 ) : (
-                  "Subscribe"
+                  <>
+                    <Send className="h-5 w-5" />
+                    Subscribe
+                  </>
                 )}
               </Button>
             </form>
           )}
 
-          <p className="text-sm text-primary-foreground/60 mt-4">
-            Unsubscribe anytime. We respect your privacy.
+          <p className="text-sm text-white/60 mt-4">
+            Unsubscribe anytime. We respect your privacy. ✌️
           </p>
         </div>
       </div>
