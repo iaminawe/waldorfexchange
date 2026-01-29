@@ -13,6 +13,15 @@ interface SiteSettings {
   isPlaceholder: boolean;
 }
 
+// Type for the secure public donor view (excludes sensitive data)
+export interface PublicDonor {
+  id: string;
+  donor_name: string;
+  message: string | null;
+  amount: number;
+  created_at: string;
+}
+
 export function useSiteSettings() {
   return useQuery({
     queryKey: ["site-settings"],
@@ -74,18 +83,18 @@ export function useTotalRaised() {
 }
 
 export function useRecentDonors(limit = 10) {
-  return useQuery({
+  return useQuery<PublicDonor[]>({
     queryKey: ["recent-donors", limit],
-    queryFn: async () => {
+    queryFn: async (): Promise<PublicDonor[]> => {
+      // Use the secure public view that excludes sensitive data (email, payment IDs)
       const { data, error } = await supabase
-        .from("donations")
-        .select("id, donor_name, message, amount, created_at, is_anonymous")
-        .eq("is_anonymous", false)
+        .from("donations_public" as any)
+        .select("id, donor_name, message, amount, created_at")
         .order("created_at", { ascending: false })
         .limit(limit);
       
       if (error) throw error;
-      return data;
+      return (data as unknown as PublicDonor[]) || [];
     },
   });
 }
