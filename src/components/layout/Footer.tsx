@@ -6,13 +6,13 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-sand/50">
+    <footer className="border-t-4 border-lavender/50 bg-lavender-light/30">
       <div className="container py-12">
         <div className="grid gap-8 md:grid-cols-3">
           {/* About Section */}
           <div>
-            <h3 className="font-serif font-semibold text-lg mb-3">
-              {SITE_CONFIG.className} Class Exchange
+            <h3 className="font-display font-bold text-xl mb-3 text-teal">
+              {SITE_CONFIG.className} Class Exchange 🌟
             </h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Supporting our students' journey to connect with indigenous communities 
@@ -22,13 +22,13 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-serif font-semibold text-lg mb-3">Quick Links</h3>
+            <h3 className="font-display font-bold text-xl mb-3 text-coral">Quick Links</h3>
             <ul className="space-y-2">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="text-sm text-muted-foreground hover:text-teal font-medium transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -37,7 +37,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/auth"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm text-muted-foreground hover:text-teal font-medium transition-colors"
                 >
                   Admin Login
                 </Link>
@@ -47,28 +47,28 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-serif font-semibold text-lg mb-3">Contact</h3>
+            <h3 className="font-display font-bold text-xl mb-3 text-sunny-dark">Contact</h3>
             <address className="not-italic text-sm text-muted-foreground space-y-1">
-              <p>{SITE_CONFIG.schoolName}</p>
+              <p className="font-medium">{SITE_CONFIG.schoolName}</p>
               <p>Nelson, British Columbia</p>
               <p className="pt-2">
                 <a 
                   href="mailto:class-exchange@nelsonwaldorf.org"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-teal font-medium transition-colors"
                 >
-                  class-exchange@nelsonwaldorf.org
+                  📧 class-exchange@nelsonwaldorf.org
                 </a>
               </p>
             </address>
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+        <div className="mt-10 pt-6 border-t-2 border-lavender/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <p>
             © {currentYear} {SITE_CONFIG.schoolName}. All rights reserved.
           </p>
-          <p className="flex items-center gap-1">
-            Made with <Heart className="h-4 w-4 text-terracotta fill-terracotta" /> by the {SITE_CONFIG.className} Class
+          <p className="flex items-center gap-1 font-medium">
+            Made with <Heart className="h-4 w-4 text-coral fill-coral animate-pulse" /> by the {SITE_CONFIG.className} Class
           </p>
         </div>
       </div>

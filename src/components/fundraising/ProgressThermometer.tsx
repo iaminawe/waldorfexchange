@@ -40,63 +40,70 @@ export function ProgressThermometer({
       <div className="relative flex flex-col items-center">
         {/* Goal Label */}
         {showLabels && (
-          <div className="mb-2 text-center">
-            <p className="text-sm font-medium text-muted-foreground">Our Goal</p>
-            <p className="font-serif text-2xl font-bold text-primary">
+          <div className="mb-3 text-center">
+            <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Our Goal</p>
+            <p className="font-display text-3xl font-bold text-teal">
               {formatCurrency(goal)}
             </p>
           </div>
         )}
 
         {/* Thermometer Body */}
-        <div className={cn("relative rounded-t-full bg-muted", sizeClasses[size])}>
+        <div className={cn("relative rounded-t-full bg-lavender-light/50 border-4 border-lavender", sizeClasses[size])}>
           {/* Tick marks */}
-          <div className="absolute -left-6 top-0 h-full flex flex-col justify-between py-1">
+          <div className="absolute -left-8 top-0 h-full flex flex-col justify-between py-1">
             {[100, 75, 50, 25, 0].map((tick) => (
               <div key={tick} className="flex items-center gap-1">
-                <span className="text-xs text-muted-foreground w-6 text-right">
+                <span className="text-xs font-bold text-lavender-dark w-7 text-right">
                   {tick}%
                 </span>
-                <div className="w-2 h-px bg-border" />
+                <div className="w-2 h-0.5 bg-lavender rounded-full" />
               </div>
             ))}
           </div>
 
           {/* Fill */}
           <div
-            className="absolute bottom-0 left-0 right-0 rounded-t-full bg-gradient-to-t from-terracotta-dark via-terracotta to-terracotta-light transition-all duration-1000 ease-out"
+            className="absolute bottom-0 left-0 right-0 rounded-t-full bg-gradient-to-t from-coral-dark via-coral to-sunny transition-all duration-1000 ease-out"
             style={{ 
               height: isLoading ? "0%" : `${percentage}%`,
               "--fill-height": `${percentage}%` 
             } as React.CSSProperties}
           />
 
-          {/* Glass effect overlay */}
-          <div className="absolute inset-0 rounded-t-full bg-gradient-to-r from-white/20 via-transparent to-transparent" />
+          {/* Sparkle overlay */}
+          <div className="absolute inset-0 rounded-t-full bg-gradient-to-r from-white/30 via-transparent to-transparent" />
+          
+          {/* Fun dots pattern */}
+          <div className="absolute inset-0 rounded-t-full opacity-20" style={{
+            backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
+            backgroundSize: "8px 8px"
+          }} />
         </div>
 
         {/* Thermometer Bulb */}
-        <div className="relative -mt-2">
+        <div className="relative -mt-3">
           <div className={cn(
-            "rounded-full bg-terracotta flex items-center justify-center",
-            size === "sm" ? "h-12 w-12" : size === "md" ? "h-16 w-16" : "h-20 w-20"
+            "rounded-full bg-coral flex items-center justify-center border-4 border-coral-dark animate-pulse-scale",
+            size === "sm" ? "h-14 w-14" : size === "md" ? "h-18 w-18" : "h-24 w-24"
           )}>
-            <div className="absolute inset-1 rounded-full bg-gradient-to-br from-terracotta-light to-terracotta-dark" />
-            <div className="absolute inset-2 rounded-full bg-gradient-to-r from-white/20 via-transparent to-transparent" />
+            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-coral-light to-coral-dark" />
+            <div className="absolute inset-3 rounded-full bg-gradient-to-r from-white/30 via-transparent to-transparent" />
+            <span className="relative text-white font-bold text-lg">🔥</span>
           </div>
         </div>
       </div>
 
       {/* Amount Raised */}
       {showLabels && (
-        <div className="text-center mt-2">
-          <p className="text-sm font-medium text-muted-foreground">Raised so far</p>
-          <p className="font-serif text-3xl font-bold text-terracotta">
+        <div className="text-center mt-3">
+          <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Raised so far</p>
+          <p className="font-display text-4xl font-bold text-coral">
             {isLoading ? "..." : formatCurrency(totalRaised)}
           </p>
-          <p className="text-sm text-muted-foreground mt-1">
-            {isLoading ? "..." : `${percentage.toFixed(0)}% of goal`}
-          </p>
+          <div className="mt-2 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sunny/20 text-sunny-dark font-bold text-sm">
+            🎉 {isLoading ? "..." : `${percentage.toFixed(0)}% there!`}
+          </div>
         </div>
       )}
     </div>

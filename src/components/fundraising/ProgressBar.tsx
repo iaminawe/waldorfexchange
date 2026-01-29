@@ -24,33 +24,42 @@ export function ProgressBar({ className }: ProgressBarProps) {
 
   return (
     <div className={cn("w-full", className)}>
-      <div className="flex items-center justify-between mb-2">
+      <div className="flex items-center justify-between mb-3">
         <div>
-          <span className="font-serif text-xl font-bold text-terracotta">
+          <span className="font-display text-2xl font-bold text-coral">
             {isLoading ? "..." : formatCurrency(totalRaised)}
           </span>
-          <span className="text-muted-foreground ml-2">raised</span>
+          <span className="text-muted-foreground ml-2 font-medium">raised</span>
         </div>
         <div className="text-right">
-          <span className="font-serif text-xl font-bold text-primary">
+          <span className="font-display text-2xl font-bold text-teal">
             {formatCurrency(goal)}
           </span>
-          <span className="text-muted-foreground ml-2">goal</span>
+          <span className="text-muted-foreground ml-2 font-medium">goal</span>
         </div>
       </div>
 
       {/* Progress Bar */}
-      <div className="relative h-4 rounded-full bg-muted overflow-hidden">
+      <div className="relative h-6 rounded-full bg-lavender-light/50 border-3 border-lavender overflow-hidden">
         <div
-          className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-terracotta-dark via-terracotta to-terracotta-light transition-all duration-1000 ease-out"
+          className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-coral via-sunny to-teal transition-all duration-1000 ease-out"
           style={{ width: isLoading ? "0%" : `${percentage}%` }}
         />
-        <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/20 to-transparent" />
+        {/* Sparkle overlay */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/30 to-transparent" />
+        
+        {/* Moving shine effect */}
+        <div className="absolute inset-0 rounded-full overflow-hidden">
+          <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent" 
+               style={{ animationDelay: "0.5s" }} />
+        </div>
       </div>
 
-      <p className="text-center text-sm text-muted-foreground mt-2">
-        {isLoading ? "..." : `${percentage.toFixed(0)}% of our goal!`}
-      </p>
+      <div className="text-center mt-3">
+        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sunny/20 text-sunny-dark font-bold text-sm">
+          ✨ {isLoading ? "..." : `${percentage.toFixed(0)}% of our goal!`}
+        </span>
+      </div>
     </div>
   );
 }
