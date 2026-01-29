@@ -12,21 +12,25 @@ export default function About() {
   const timeline = [
     {
       phase: "Preparation",
+      time: "Now",
       description: "Fundraising, cultural learning, and building anticipation",
       status: "current",
     },
     {
-      phase: "Hosting",
-      description: "We welcome students to Nelson and share our community",
+      phase: "Hosting in Nelson",
+      time: "April 2026",
+      description: "Students from Île-à-la-Crosse visit us at our school in Nelson",
       status: "upcoming",
     },
     {
-      phase: "Northern Visit",
-      description: `Our class travels to ${communityName}`,
+      phase: "Travel to Saskatchewan",
+      time: "June 2026",
+      description: "Our class travels to Île-à-la-Crosse shortly before the end of the school year",
       status: "upcoming",
     },
     {
       phase: "Reflection",
+      time: "Summer 2026",
       description: "Sharing our experiences and maintaining connections",
       status: "upcoming",
     },
@@ -38,12 +42,15 @@ export default function About() {
       <section className="py-16 md:py-24 gradient-warm">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold mb-4">
+              Experience Canada Exchange
+            </span>
             <h1 className="font-serif text-4xl md:text-5xl font-bold mb-6">
               About the Exchange
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              A transformative journey connecting young people from{" "}
-              {SITE_CONFIG.schoolName} with students from {communityName}.
+              A reciprocal exchange connecting {SITE_CONFIG.className} at{" "}
+              {SITE_CONFIG.schoolName} with the {communityName} in Saskatchewan.
             </p>
           </div>
         </div>
@@ -55,25 +62,25 @@ export default function About() {
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div>
               <h2 className="font-serif text-3xl font-bold mb-6">
-                What Is This Exchange?
+                What Is the Experience Canada Exchange?
               </h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  The Class Exchange Program is a cornerstone of Waldorf education's 
-                  commitment to fostering global citizenship and cultural understanding. 
-                  For our {SITE_CONFIG.className} class, this means embarking on a 
-                  meaningful journey connecting us with northern Saskatchewan.
+                  Our school has officially been twinned with the{" "}
+                  <span className="font-medium text-foreground">{communityName}</span> in Saskatchewan 
+                  through the Experience Canada Exchange program. This exchange will become our{" "}
+                  {SITE_CONFIG.className} year-end trip!
                 </p>
                 <p>
-                  First, we'll have the honor of hosting students from{" "}
-                  <span className="font-medium text-foreground">{communityName}</span>{" "}
-                  here in Nelson, sharing our Waldorf approach to learning and the natural 
-                  beauty of our region.
+                  This is a <span className="font-medium text-foreground">reciprocal exchange</span>, meaning both groups 
+                  host and travel. In <span className="font-medium text-foreground">April</span>, students from Île-à-la-Crosse 
+                  will visit us at our school in Nelson. Then in <span className="font-medium text-foreground">June</span>, 
+                  our students travel to Saskatchewan, shortly before the end of the school year.
                 </p>
                 <p>
-                  Then, our class will travel north to experience life in their community 
-                  firsthand—participating in traditional activities, learning from elders, 
-                  and deepening the friendships formed during the hosting phase.
+                  This timing was agreed upon after conversations with the Friendship Centre 
+                  coordinator and fits well within our school calendars, allowing for a 
+                  meaningful exchange experience.
                 </p>
               </div>
             </div>
@@ -85,23 +92,34 @@ export default function About() {
                 <div>
                   <h3 className="font-semibold mb-1">Two Communities</h3>
                   <p className="text-sm text-muted-foreground">
-                    Nelson, BC and {communityName}
+                    Nelson, BC ↔ Île-à-la-Crosse, Saskatchewan
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-terracotta/10 text-terracotta flex items-center justify-center">
-                  <Users className="h-5 w-5" />
+                  <Calendar className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">{SITE_CONFIG.className} Students</h3>
+                  <h3 className="font-semibold mb-1">Reciprocal Exchange</h3>
                   <p className="text-sm text-muted-foreground">
-                    Young people ready to learn and grow together
+                    They visit us in April • We travel in June
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-forest/10 text-forest flex items-center justify-center">
+                  <Users className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1">{SITE_CONFIG.className} Year-End Trip</h3>
+                  <p className="text-sm text-muted-foreground">
+                    A meaningful journey for our students
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-sunny/10 text-sunny flex items-center justify-center">
                   <Heart className="h-5 w-5" />
                 </div>
                 <div>
@@ -127,12 +145,12 @@ export default function About() {
             <div className="bg-card rounded-xl p-8 border border-border">
               <h3 className="font-serif text-xl font-semibold mb-4 flex items-center gap-2">
                 <span className="text-2xl">🏔️</span>
-                In the Northern Community
+                In Île-à-la-Crosse (June)
               </h3>
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">•</span>
-                  Traditional indigenous ceremonies and storytelling
+                  Traditional Métis ceremonies and storytelling
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">•</span>
@@ -156,7 +174,7 @@ export default function About() {
             <div className="bg-card rounded-xl p-8 border border-border">
               <h3 className="font-serif text-xl font-semibold mb-4 flex items-center gap-2">
                 <span className="text-2xl">🌲</span>
-                When We Host in Nelson
+                When We Host in Nelson (April)
               </h3>
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-2">
@@ -212,18 +230,23 @@ export default function About() {
                     <div className={`p-4 rounded-lg ${
                       item.status === "current" ? "bg-terracotta/10" : "bg-muted/50"
                     }`}>
-                      <h3 className="font-semibold flex items-center gap-2">
-                        {item.phase}
-                        {item.status === "current" && (
-                          <span className="text-xs bg-terracotta text-terracotta-foreground px-2 py-0.5 rounded">
-                            Current Phase
+                        <div className="flex items-center justify-between">
+                          <h3 className="font-semibold flex items-center gap-2">
+                            {item.phase}
+                            {item.status === "current" && (
+                              <span className="text-xs bg-terracotta text-terracotta-foreground px-2 py-0.5 rounded">
+                                Current Phase
+                              </span>
+                            )}
+                          </h3>
+                          <span className="text-xs font-medium text-muted-foreground">
+                            {item.time}
                           </span>
-                        )}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        {item.description}
-                      </p>
-                    </div>
+                        </div>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          {item.description}
+                        </p>
+                      </div>
                   </div>
                 ))}
               </div>
