@@ -10,6 +10,13 @@ import Donors from "./pages/Donors";
 import Blog from "./pages/Blog";
 import Auth from "./pages/Auth";
 import AdminDashboard from "./pages/admin/Dashboard";
+import AdminDonations from "./pages/admin/Donations";
+import AdminEvents from "./pages/admin/Events";
+import AdminSubscribers from "./pages/admin/Subscribers";
+import AdminBlogPosts from "./pages/admin/BlogPosts";
+import AdminRaffles from "./pages/admin/Raffles";
+import AdminUsers from "./pages/admin/Users";
+import AdminSettings from "./pages/admin/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +38,13 @@ const App = () => (
           
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/donations" element={<AdminDonations />} />
+          <Route path="/admin/events" element={<AdminEvents />} />
+          <Route path="/admin/subscribers" element={<AdminSubscribers />} />
+          <Route path="/admin/blog" element={<AdminBlogPosts />} />
+          <Route path="/admin/raffles" element={<AdminRaffles />} />
+          <Route path="/admin/users" element={<AdminUsers />} />
+          <Route path="/admin/settings" element={<AdminSettings />} />
           
           {/* Catch-all */}
           <Route path="*" element={<NotFound />} />
