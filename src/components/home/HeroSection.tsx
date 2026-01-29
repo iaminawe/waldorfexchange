@@ -28,7 +28,7 @@ export function HeroSection() {
           <div className="space-y-6 text-center lg:text-left">
             <div className="inline-block">
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-card/90 text-primary text-sm font-bold">
-                ✨ Class Exchange Fundraiser
+                ✨ Experience Canada Exchange
               </span>
             </div>
 
@@ -37,8 +37,8 @@ export function HeroSection() {
             </h1>
 
             <p className="text-lg text-white/90 max-w-xl mx-auto lg:mx-0 leading-relaxed drop-shadow">
-              The {SITE_CONFIG.className} class at {SITE_CONFIG.schoolName} is raising funds 
-              for a cultural exchange with students from <span className="font-semibold text-white">{communityName}</span>. 
+              {SITE_CONFIG.className} at {SITE_CONFIG.schoolName} is raising funds 
+              for a reciprocal exchange with the <span className="font-semibold text-white">{communityName}</span> in Saskatchewan. 
               Help us create unforgettable memories!
             </p>
 
