@@ -63,13 +63,13 @@ export function StorySection() {
               </h3>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  In the coming months, our {SITE_CONFIG.className} class will travel to{" "}
-                  <span className="font-medium text-foreground">{communityName}</span> to 
-                  experience life in a northern indigenous community firsthand.
+                  First, we'll have the honor of hosting students from{" "}
+                  <span className="font-medium text-foreground">{communityName}</span> here in 
+                  Nelson, sharing our Waldorf education approach and the beauty of our region.
                 </p>
                 <p>
-                  Later, we'll have the honor of hosting students from that community here in 
-                  Nelson, sharing our Waldorf education approach and the beauty of our region.
+                  Then, our {SITE_CONFIG.className} class will travel north to experience 
+                  life in their community firsthand, deepening the connections we've built.
                 </p>
                 <p>
                   Your support makes this transformative experience possible for all the 

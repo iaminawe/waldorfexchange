@@ -16,13 +16,13 @@ export default function About() {
       status: "current",
     },
     {
-      phase: "Northern Visit",
-      description: `Our class travels to ${communityName}`,
+      phase: "Hosting",
+      description: "We welcome students to Nelson and share our community",
       status: "upcoming",
     },
     {
-      phase: "Hosting",
-      description: "We welcome students to Nelson and share our community",
+      phase: "Northern Visit",
+      description: `Our class travels to ${communityName}`,
       status: "upcoming",
     },
     {
@@ -62,19 +62,18 @@ export default function About() {
                   The Class Exchange Program is a cornerstone of Waldorf education's 
                   commitment to fostering global citizenship and cultural understanding. 
                   For our {SITE_CONFIG.className} class, this means embarking on a 
-                  meaningful journey to northern Saskatchewan.
+                  meaningful journey connecting us with northern Saskatchewan.
                 </p>
                 <p>
-                  Over the course of this program, our students will travel to{" "}
+                  First, we'll have the honor of hosting students from{" "}
                   <span className="font-medium text-foreground">{communityName}</span>{" "}
-                  to experience life in an indigenous community. They'll participate in 
-                  traditional activities, learn from elders, and form genuine friendships 
-                  with local students.
-                </p>
-                <p>
-                  Later in the year, we'll have the honor of hosting those same students 
                   here in Nelson, sharing our Waldorf approach to learning and the natural 
                   beauty of our region.
+                </p>
+                <p>
+                  Then, our class will travel north to experience life in their community 
+                  firsthand—participating in traditional activities, learning from elders, 
+                  and deepening the friendships formed during the hosting phase.
                 </p>
               </div>
             </div>
