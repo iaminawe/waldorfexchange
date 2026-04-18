@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ProgressThermometer } from "@/components/fundraising/ProgressThermometer";
 import { useSiteSettings } from "@/hooks/useFundraisingData";
 import { SITE_CONFIG } from "@/lib/constants";
-import nelsonHero from "@/assets/nelson-hero.jpeg";
+import nelsonHero from "@/assets/nelson-bridge.jpeg";
 
 export function HeroSection() {
   const { data: settings } = useSiteSettings();
@@ -37,9 +37,11 @@ export function HeroSection() {
             </h1>
 
             <p className="text-lg text-white/90 max-w-xl mx-auto lg:mx-0 leading-relaxed drop-shadow">
-              {SITE_CONFIG.className} at {SITE_CONFIG.schoolName} is raising funds 
-              for a reciprocal exchange with the <span className="font-semibold text-white">{communityName}</span> in Saskatchewan. 
-              Help us create unforgettable memories!
+              {SITE_CONFIG.className} at {SITE_CONFIG.schoolName} is raising funds
+              for a reciprocal exchange with{" "}
+              <span className="font-semibold text-white">Île-à-la-Crosse (Sakitawak)</span>, Saskatchewan — the
+              second oldest settlement in the province and the Métis Capital of the North.
+              Help us make this journey possible!
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
@@ -68,12 +70,13 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Thermometer */}
+          {/* Thermometer — uncomment when ready to launch fundraising
           <div className="flex justify-center lg:justify-end">
             <div className="bg-card/95 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-border">
               <ProgressThermometer size="md" />
             </div>
           </div>
+          */}
         </div>
       </div>
     </section>

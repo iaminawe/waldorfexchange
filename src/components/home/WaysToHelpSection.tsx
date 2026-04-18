@@ -78,7 +78,8 @@ export function WaysToHelpSection() {
                 </ul>
               ) : (
                 <p className="text-sm text-muted-foreground mb-4">
-                  Various ticket packages available at great prices!
+                  Raffle tickets go on sale <strong className="text-foreground">April 28</strong>!
+                  Various ticket packages available at great prices.
                 </p>
               )}
               <Button asChild variant="outline" className="w-full gap-2 rounded-xl font-bold">

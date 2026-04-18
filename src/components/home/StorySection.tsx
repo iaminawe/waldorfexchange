@@ -1,28 +1,30 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Users, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, Users, MapPin, Sparkles, Calendar, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useSiteSettings } from "@/hooks/useFundraisingData";
+import { useSiteSettings, usePublishedPosts } from "@/hooks/useFundraisingData";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export function StorySection() {
   const { data: settings } = useSiteSettings();
   const communityName = settings?.communityName ?? SITE_CONFIG.communityPlaceholder;
+  const { data: posts } = usePublishedPosts(1);
+  const latestPost = posts?.[0];
 
   const highlights = [
     {
       icon: Users,
       title: "Cultural Exchange",
-      description: "Students from both communities will share their traditions, stories, and ways of life.",
+      description: "An invitation into a living Métis community with deep roots, strong traditions, and a powerful sense of shared responsibility.",
     },
     {
       icon: MapPin,
       title: "Two-Way Journey",
-      description: "We host visitors first, then travel north to experience their community.",
+      description: "We host visitors in Nelson first, then travel to Sakitawak — Cree for \"where the rivers meet\" — to experience their community.",
     },
     {
       icon: Sparkles,
       title: "Lifelong Connections",
-      description: "Creating friendships and understanding that will last well beyond the classroom.",
+      description: "Meaningful cultural learning, connection to place and history, and the chance to grow into more thoughtful young people.",
     },
   ];
 
@@ -34,8 +36,9 @@ export function StorySection() {
             Why This Exchange Matters
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            This isn't just a field trip—it's an opportunity for young people from different 
-            backgrounds to learn from each other and build genuine relationships.
+            This is not a typical school trip. It's an invitation into a community shaped by
+            waterways, stories, language, and generations of people who value respect,
+            cooperation, and care for one another.
           </p>
         </div>
 
@@ -54,43 +57,51 @@ export function StorySection() {
           ))}
         </div>
 
-        <div className="bg-card rounded-2xl p-8 md:p-10 border border-border">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="font-display text-2xl md:text-3xl font-bold mb-4">
-                The Journey Ahead
-              </h3>
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  First, we'll have the honor of hosting students from{" "}
-                  <span className="font-semibold text-foreground">{communityName}</span> here in 
-                  Nelson, sharing our Waldorf education approach and the beauty of our region.
-                </p>
-                <p>
-                  Then, our {SITE_CONFIG.className} class will travel north to experience 
-                  life in their community firsthand, deepening the connections we've built.
-                </p>
-              </div>
-              <Button asChild className="mt-6 gap-2 rounded-xl font-bold">
-                <Link to="/about">
-                  Read Our Full Story
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-            <div className="relative">
-              {/* Placeholder for future photo */}
-              <div className="aspect-[4/3] rounded-xl bg-muted border border-border flex items-center justify-center">
-                <div className="text-center p-6">
-                  <span className="text-4xl mb-3 block">🌲</span>
-                  <p className="text-sm text-muted-foreground font-medium">
-                    Photo coming soon
-                  </p>
+        {latestPost && (
+          <div className="bg-card rounded-2xl p-8 md:p-10 border border-border">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+                  <Calendar className="h-4 w-4" />
+                  <time>
+                    {new Date(latestPost.published_at!).toLocaleDateString("en-CA", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </time>
                 </div>
+                <h3 className="font-display text-2xl md:text-3xl font-bold mb-4">
+                  {latestPost.title}
+                </h3>
+                {latestPost.excerpt && (
+                  <p className="text-muted-foreground leading-relaxed">
+                    {latestPost.excerpt}
+                  </p>
+                )}
+                <Button asChild className="mt-6 gap-2 rounded-xl font-bold">
+                  <Link to={`/blog/${latestPost.slug}`}>
+                    Read More
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+              <div className="relative">
+                {latestPost.featured_image_url ? (
+                  <img
+                    src={latestPost.featured_image_url}
+                    alt={latestPost.title}
+                    className="aspect-[4/3] rounded-xl object-cover w-full"
+                  />
+                ) : (
+                  <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-forest/20 via-terracotta/10 to-sand border border-border flex items-center justify-center">
+                    <BookOpen className="h-12 w-12 text-primary/30" />
+                  </div>
+                )}
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
