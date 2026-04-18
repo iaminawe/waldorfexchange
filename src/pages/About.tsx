@@ -4,6 +4,8 @@ import { ArrowRight, MapPin, Users, Heart, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSiteSettings } from "@/hooks/useFundraisingData";
 import { SITE_CONFIG } from "@/lib/constants";
+import ilcWelcome from "@/assets/ile-a-la-crosse-welcome.png";
+import historicMap from "@/assets/historic-map-texture.png";
 
 export default function About() {
   const { data: settings } = useSiteSettings();
@@ -18,14 +20,14 @@ export default function About() {
     },
     {
       phase: "Hosting in Nelson",
-      time: "April 2026",
-      description: "Students from Île-à-la-Crosse visit us at our school in Nelson",
+      time: "May 2026",
+      description: "Welcoming students from Île-à-la-Crosse to our school and community",
       status: "upcoming",
     },
     {
       phase: "Travel to Saskatchewan",
       time: "June 2026",
-      description: "Our class travels to Île-à-la-Crosse shortly before the end of the school year",
+      description: "Our class travels to Île-à-la-Crosse (Sakitawak) to experience life in their community",
       status: "upcoming",
     },
     {
@@ -50,15 +52,21 @@ export default function About() {
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
               A reciprocal exchange connecting {SITE_CONFIG.className} at{" "}
-              {SITE_CONFIG.schoolName} with the {communityName} in Saskatchewan.
+              {SITE_CONFIG.schoolName} with Île-à-la-Crosse (Sakitawak), Saskatchewan — the
+              second oldest settlement in the province and the Métis Capital of the North.
             </p>
           </div>
         </div>
       </section>
 
       {/* The Exchange Program */}
-      <section className="py-16 md:py-24">
-        <div className="container">
+      <section className="relative py-16 md:py-24 overflow-hidden">
+        {/* Historic map background texture */}
+        <div
+          className="absolute inset-0 opacity-[0.06] bg-center bg-cover pointer-events-none"
+          style={{ backgroundImage: `url(${historicMap})` }}
+        />
+        <div className="container relative z-10">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div>
               <h2 className="font-serif text-3xl font-bold mb-6">
@@ -67,24 +75,33 @@ export default function About() {
               <div className="space-y-4 text-muted-foreground">
                 <p>
                   Our school has officially been twinned with the{" "}
-                  <span className="font-medium text-foreground">{communityName}</span> in Saskatchewan 
-                  through the Experience Canada Exchange program. This exchange will become our{" "}
-                  {SITE_CONFIG.className} year-end trip!
+                  <span className="font-medium text-foreground">{communityName}</span> in Saskatchewan
+                  through the Experience Canada Exchange program. Île-à-la-Crosse — known locally
+                  as <span className="font-medium text-foreground">Sakitawak</span>, which is Cree
+                  for "where the rivers meet" — is the second oldest settlement in Saskatchewan,
+                  founded in 1776, and is often called the Métis Capital of the North.
                 </p>
                 <p>
-                  This is a <span className="font-medium text-foreground">reciprocal exchange</span>, meaning both groups 
-                  host and travel. In <span className="font-medium text-foreground">April</span>, students from Île-à-la-Crosse 
-                  will visit us at our school in Nelson. Then in <span className="font-medium text-foreground">June</span>, 
-                  our students travel to Saskatchewan, shortly before the end of the school year.
+                  This is not a typical school trip. It is an invitation into a living community
+                  with deep roots, strong traditions, and a powerful sense of shared responsibility.
+                  Île-à-la-Crosse is a place shaped by waterways, stories, language, land-based
+                  knowledge, and generations of people who value respect, cooperation, and care
+                  for one another.
                 </p>
                 <p>
-                  This timing was agreed upon after conversations with the Friendship Centre 
-                  coordinator and fits well within our school calendars, allowing for a 
-                  meaningful exchange experience.
+                  This is a <span className="font-medium text-foreground">reciprocal exchange</span>, meaning both groups
+                  host and travel. In <span className="font-medium text-foreground">May</span>, students from Île-à-la-Crosse
+                  will visit us at our school in Nelson. Then in <span className="font-medium text-foreground">June</span>,
+                  our students travel to Saskatchewan to experience life in their community firsthand.
                 </p>
               </div>
             </div>
             <div className="bg-sand/50 rounded-2xl p-8 space-y-6">
+              <img
+                src={ilcWelcome}
+                alt="Welcome to the Northern Village of Île-à-la-Crosse sign"
+                className="w-full rounded-xl object-cover"
+              />
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
                   <MapPin className="h-5 w-5" />
@@ -103,7 +120,7 @@ export default function About() {
                 <div>
                   <h3 className="font-semibold mb-1">Reciprocal Exchange</h3>
                   <p className="text-sm text-muted-foreground">
-                    They visit us in April • We travel in June
+                    They visit us in May • We travel in June
                   </p>
                 </div>
               </div>
@@ -145,28 +162,28 @@ export default function About() {
             <div className="bg-card rounded-xl p-8 border border-border">
               <h3 className="font-serif text-xl font-semibold mb-4 flex items-center gap-2">
                 <span className="text-2xl">🏔️</span>
-                In Île-à-la-Crosse (June)
+                In Île-à-la-Crosse / Sakitawak (June)
               </h3>
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">•</span>
-                  Traditional Métis ceremonies and storytelling
+                  Meaningful cultural learning with a Métis community
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">•</span>
-                  Land-based learning activities
+                  Connection to place and history in one of Saskatchewan's oldest settlements
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">•</span>
-                  Sharing meals and daily life with host families
+                  Land-based learning and outdoor experiences in northern Saskatchewan's beautiful landscape
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">•</span>
-                  Learning about history, language, and culture
+                  Learning about Cree and Michif language, stories, and traditions
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">•</span>
-                  Building genuine friendships across cultures
+                  Growing into more responsible, thoughtful young people through community connection
                 </li>
               </ul>
             </div>
@@ -174,7 +191,7 @@ export default function About() {
             <div className="bg-card rounded-xl p-8 border border-border">
               <h3 className="font-serif text-xl font-semibold mb-4 flex items-center gap-2">
                 <span className="text-2xl">🌲</span>
-                When We Host in Nelson (April)
+                When We Host in Nelson (May)
               </h3>
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-2">
@@ -220,8 +237,8 @@ export default function About() {
                   <div key={item.phase} className="relative pl-12">
                     {/* Dot */}
                     <div className={`absolute left-0 w-8 h-8 rounded-full flex items-center justify-center ${
-                      item.status === "current" 
-                        ? "bg-terracotta text-terracotta-foreground" 
+                      item.status === "current"
+                        ? "bg-terracotta text-terracotta-foreground"
                         : "bg-muted text-muted-foreground"
                     }`}>
                       <Calendar className="h-4 w-4" />
