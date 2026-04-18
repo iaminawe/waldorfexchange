@@ -167,7 +167,8 @@ export default function Support() {
 
           <div className="text-center mt-8">
             <p className="text-sm text-muted-foreground">
-              Online raffle purchases coming soon. Tickets also available at school events.
+              Raffle tickets go on sale <strong className="text-foreground">April 28</strong>!
+              Available online and from Class 8/9 students at the Co-op.
             </p>
           </div>
         </div>
